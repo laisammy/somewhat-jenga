@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://db1l0s0lq08x3" path="res://assets/images/textures/rubber_tiles_diff_1k.jpg" id="5_bdhmt"]
 [ext_resource type="Texture2D" uid="uid://bo70bceknm7lp" path="res://assets/images/textures/rubber_tiles_ao_1k.jpg" id="6_87uf6"]
 [ext_resource type="Texture2D" uid="uid://bigdttkwf4r2r" path="res://assets/images/textures/rubber_tiles_nor_gl_1k.jpg" id="7_2a8rs"]
+[ext_resource type="PackedScene" uid="uid://dq24o73r4qc4v" path="res://scenes/brick/brick.tscn" id="8_87uf6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7h61r"]
 panorama = ExtResource("1_sul5r")
@@ -18,9 +19,12 @@ sky_material = SubResource("PanoramaSkyMaterial_7h61r")
 [sub_resource type="Environment" id="Environment_7h61r"]
 background_mode = 2
 sky = SubResource("Sky_0sr1o")
-sky_rotation = Vector3(0, 4.569272, 0)
+sky_rotation = Vector3(0, 5.2551866, 0)
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bdhmt"]
+size = Vector3(10.100586, 0.14620972, 9.981415)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ifgtf"]
 size = Vector3(10, 0.5, 10)
@@ -31,6 +35,9 @@ normal_enabled = true
 normal_texture = ExtResource("4_5i0tg")
 ao_enabled = true
 ao_texture = ExtResource("3_lfrn8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_87uf6"]
+size = Vector3(2.4916382, 0.12193298, 2.5072937)
 
 [sub_resource type="BoxMesh" id="BoxMesh_sul5r"]
 size = Vector3(2.5, 0.2, 2.5)
@@ -49,16 +56,53 @@ environment = SubResource("Environment_7h61r")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1526747386]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
+light_energy = 0.3
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1870365852]
 transform = Transform3D(0.68550086, -0.21315923, 0.6961694, -1.4536568e-09, 0.95618224, 0.29277226, -0.72807187, -0.20069563, 0.6554637, 4.947765, 5.5, 4.670684)
 
-[node name="table" type="MeshInstance3D" parent="." unique_id=87946511]
+[node name="lights" type="Node3D" parent="." unique_id=215302359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lights" unique_id=983397871]
+light_color = Color(0.6743248, 0.5530889, 0.35037932, 1)
+light_energy = 7.33
+omni_range = 12.218
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="lights" unique_id=60572481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8983116, -0.81056404, -6.633049)
+light_color = Color(0.6743248, 0.5530889, 0.35037932, 1)
+light_energy = 7.33
+omni_range = 12.218
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="lights" unique_id=238083673]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.079214, -0.81056404, 5.365017)
+light_color = Color(0.6743248, 0.5530889, 0.35037932, 1)
+light_energy = 7.33
+omni_range = 12.218
+
+[node name="brick" parent="." unique_id=1212066804 instance=ExtResource("8_87uf6")]
+transform = Transform3D(0.8970425, -0.17374583, 0.4063584, 0, 0.9194788, 0.39313966, -0.44194427, -0.35266298, 0.8248116, 0, 6.487758, 2.2096086)
+
+[node name="table" type="StaticBody3D" parent="." unique_id=743138136 groups=["table"]]
+
+[node name="tableCollision" type="CollisionShape3D" parent="table" unique_id=76196697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016113281, 0.18007517, -0.011276245)
+shape = SubResource("BoxShape3D_bdhmt")
+
+[node name="tableMesh" type="MeshInstance3D" parent="table" unique_id=87946511]
 mesh = SubResource("BoxMesh_ifgtf")
 surface_material_override/0 = SubResource("StandardMaterial3D_0sr1o")
 
-[node name="playArea" type="MeshInstance3D" parent="." unique_id=277589754]
+[node name="playArea2" type="StaticBody3D" parent="." unique_id=1467138831]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="playArea2" unique_id=2101603078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0050354004, 0.39105415, 0.0055389404)
+shape = SubResource("BoxShape3D_87uf6")
+
+[node name="playAreaMesh" type="MeshInstance3D" parent="playArea2" unique_id=277589754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34287453, 0)
 mesh = SubResource("BoxMesh_sul5r")
 surface_material_override/0 = SubResource("StandardMaterial3D_kelw5")
