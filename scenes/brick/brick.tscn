@@ -1,20 +1,7 @@
 [gd_scene format=3 uid="uid://dq24o73r4qc4v"]
 
-[ext_resource type="Texture2D" uid="uid://di3xf184g1te3" path="res://assets/images/textures/plywood_diff_1k.jpg" id="1_5cq3d"]
 [ext_resource type="Script" uid="uid://d3b027t1s06h3" path="res://scenes/brick/brick.gd" id="1_a0gjw"]
-[ext_resource type="Texture2D" uid="uid://cracxyrw2x6lt" path="res://assets/images/textures/plywood_ao_1k.jpg" id="2_a0gjw"]
-[ext_resource type="Texture2D" uid="uid://cxe3x0j52kyyl" path="res://assets/images/textures/plywood_nor_gl_1k.jpg" id="3_18nu1"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hxk1n"]
-albedo_texture = ExtResource("1_5cq3d")
-normal_enabled = true
-normal_texture = ExtResource("3_18nu1")
-ao_enabled = true
-ao_texture = ExtResource("2_a0gjw")
-
-[sub_resource type="BoxMesh" id="BoxMesh_xajoh"]
-material = SubResource("StandardMaterial3D_hxk1n")
-size = Vector3(0.4, 0.4, 2)
+[ext_resource type="PackedScene" uid="uid://ba1a1x4wt0p0g" path="res://scenes/brickMesh/brick_mesh.tscn" id="2_k3dtg"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5uvm4"]
 points = PackedVector3Array(0.2, 0.2, 1, 0.2, -0.2, 1, 0.2, 0.2, -1, -0.2, 0.2, 1, -0.2, -0.2, 1, 0.2, -0.2, -1, -0.2, 0.2, -1, -0.2, -0.2, -1)
@@ -24,8 +11,7 @@ contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_a0gjw")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2064156228]
-mesh = SubResource("BoxMesh_xajoh")
+[node name="brickMesh" parent="." unique_id=244673536 instance=ExtResource("2_k3dtg")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=366790552]
 shape = SubResource("ConvexPolygonShape3D_5uvm4")

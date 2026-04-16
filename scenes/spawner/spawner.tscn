@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b4ydfhlrnlavi"]
+
+[ext_resource type="Script" uid="uid://bqdhtxa3rfavo" path="res://scenes/spawner/spawner.gd" id="1_eoeca"]
+[ext_resource type="PackedScene" uid="uid://ba1a1x4wt0p0g" path="res://scenes/brickMesh/brick_mesh.tscn" id="2_wtxcb"]
+
+[node name="spawner" type="Node3D" unique_id=1366810530]
+script = ExtResource("1_eoeca")
+
+[node name="pivot" type="Node3D" parent="." unique_id=865231935]
+
+[node name="brickMesh" parent="pivot" unique_id=244673536 instance=ExtResource("2_wtxcb")]

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://db1l0s0lq08x3" path="res://assets/images/textures/rubber_tiles_diff_1k.jpg" id="5_bdhmt"]
 [ext_resource type="Texture2D" uid="uid://bo70bceknm7lp" path="res://assets/images/textures/rubber_tiles_ao_1k.jpg" id="6_87uf6"]
 [ext_resource type="Texture2D" uid="uid://bigdttkwf4r2r" path="res://assets/images/textures/rubber_tiles_nor_gl_1k.jpg" id="7_2a8rs"]
-[ext_resource type="PackedScene" uid="uid://dq24o73r4qc4v" path="res://scenes/brick/brick.tscn" id="8_87uf6"]
+[ext_resource type="PackedScene" uid="uid://b4ydfhlrnlavi" path="res://scenes/spawner/spawner.tscn" id="9_2a8rs"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7h61r"]
 panorama = ExtResource("1_sul5r")
@@ -61,7 +61,7 @@ light_energy = 0.3
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1870365852]
-transform = Transform3D(0.68550086, -0.21315923, 0.6961694, -1.4536568e-09, 0.95618224, 0.29277226, -0.72807187, -0.20069563, 0.6554637, 4.947765, 5.5, 4.670684)
+transform = Transform3D(-0.7221829, 0.20251118, -0.6613933, -1.2302774e-08, 0.9561822, 0.29277223, 0.6917022, 0.21143517, -0.6905384, -4.263615, 5.5, -4.472024)
 
 [node name="lights" type="Node3D" parent="." unique_id=215302359]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
@@ -83,9 +83,6 @@ light_color = Color(0.6743248, 0.5530889, 0.35037932, 1)
 light_energy = 7.33
 omni_range = 12.218
 
-[node name="brick" parent="." unique_id=1212066804 instance=ExtResource("8_87uf6")]
-transform = Transform3D(0.8970425, -0.17374583, 0.4063584, 0, 0.9194788, 0.39313966, -0.44194427, -0.35266298, 0.8248116, 0, 6.487758, 2.2096086)
-
 [node name="table" type="StaticBody3D" parent="." unique_id=743138136 groups=["table"]]
 
 [node name="tableCollision" type="CollisionShape3D" parent="table" unique_id=76196697]
@@ -106,3 +103,6 @@ shape = SubResource("BoxShape3D_87uf6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34287453, 0)
 mesh = SubResource("BoxMesh_sul5r")
 surface_material_override/0 = SubResource("StandardMaterial3D_kelw5")
+
+[node name="spawner" parent="." unique_id=1366810530 instance=ExtResource("9_2a8rs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)

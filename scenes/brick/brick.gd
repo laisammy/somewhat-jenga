@@ -17,8 +17,10 @@ func _process(delta: float) -> void:
 
 func _on_sleeping_state_changed() -> void:
 	print("_on_sleeping_state_changed: ", sleeping)
+	SignalHub.emit_on_brick_landed(position.y)
 
 func _on_body_entered(body: Node) -> void:
 	print("Brick has collided with " + str(body))
 	if body.is_in_group(TABLE_GROUP):
 		print("Game over")
+		SignalHub.emit_on_game_over()
