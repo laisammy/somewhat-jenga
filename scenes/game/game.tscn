@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://6o5l7rpapsmj"]
 
+[ext_resource type="Script" uid="uid://wl8b40ye0p7u" path="res://scenes/game/game.gd" id="1_2a8rs"]
 [ext_resource type="Texture2D" uid="uid://chkxk08ga6qvl" path="res://assets/hdr/billiard_hall_2k.hdr" id="1_sul5r"]
 [ext_resource type="Texture2D" uid="uid://dnfqxvo142t4" path="res://assets/images/textures/wood_table_worn_diff_1k.jpg" id="2_kelw5"]
 [ext_resource type="Texture2D" uid="uid://bpkkw6vxw34pu" path="res://assets/images/textures/wood_table_worn_ao_1k.jpg" id="3_lfrn8"]
@@ -7,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://db1l0s0lq08x3" path="res://assets/images/textures/rubber_tiles_diff_1k.jpg" id="5_bdhmt"]
 [ext_resource type="Texture2D" uid="uid://bo70bceknm7lp" path="res://assets/images/textures/rubber_tiles_ao_1k.jpg" id="6_87uf6"]
 [ext_resource type="Texture2D" uid="uid://bigdttkwf4r2r" path="res://assets/images/textures/rubber_tiles_nor_gl_1k.jpg" id="7_2a8rs"]
+[ext_resource type="PackedScene" uid="uid://dq24o73r4qc4v" path="res://scenes/brick/brick.tscn" id="8_87uf6"]
 [ext_resource type="PackedScene" uid="uid://b4ydfhlrnlavi" path="res://scenes/spawner/spawner.tscn" id="9_2a8rs"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7h61r"]
@@ -50,6 +52,8 @@ ao_enabled = true
 ao_texture = ExtResource("6_87uf6")
 
 [node name="game" type="Node" unique_id=663350719]
+script = ExtResource("1_2a8rs")
+brick_scene = ExtResource("8_87uf6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1213908972]
 environment = SubResource("Environment_7h61r")
@@ -60,28 +64,16 @@ light_color = Color(0.70380783, 0.70380783, 0.70380783, 1)
 light_energy = 0.3
 shadow_enabled = true
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1870365852]
-transform = Transform3D(-0.7221829, 0.20251118, -0.6613933, -1.2302774e-08, 0.9561822, 0.29277223, 0.6917022, 0.21143517, -0.6905384, -4.263615, 5.5, -4.472024)
-
 [node name="lights" type="Node3D" parent="." unique_id=215302359]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="lights" unique_id=983397871]
-light_color = Color(0.6743248, 0.5530889, 0.35037932, 1)
-light_energy = 7.33
-omni_range = 12.218
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="lights" unique_id=60572481]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8983116, -0.81056404, -6.633049)
-light_color = Color(0.6743248, 0.5530889, 0.35037932, 1)
-light_energy = 7.33
-omni_range = 12.218
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="lights" unique_id=238083673]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.079214, -0.81056404, 5.365017)
-light_color = Color(0.6743248, 0.5530889, 0.35037932, 1)
-light_energy = 7.33
-omni_range = 12.218
+[node name="spotLight3d" type="SpotLight3D" parent="lights" unique_id=1396161363]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+light_color = Color(0.99999875, 0.99641305, 0.7529428, 1)
+light_energy = 1.3
+spot_range = 11.749189
+spot_attenuation = -0.39
+spot_angle = 35.15625
 
 [node name="table" type="StaticBody3D" parent="." unique_id=743138136 groups=["table"]]
 
@@ -106,3 +98,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_kelw5")
 
 [node name="spawner" parent="." unique_id=1366810530 instance=ExtResource("9_2a8rs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="brickContainer" type="Node" parent="." unique_id=642558276]
+
+[editable path="spawner"]

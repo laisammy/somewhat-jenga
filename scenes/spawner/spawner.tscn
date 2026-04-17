@@ -9,9 +9,16 @@ script = ExtResource("1_eoeca")
 [node name="pivot" type="Node3D" parent="." unique_id=865231935]
 
 [node name="brickMesh" parent="pivot" unique_id=244673536 instance=ExtResource("2_wtxcb")]
-visible = false
 
 [node name="timer" type="Timer" parent="." unique_id=1876842766]
 one_shot = true
+
+[node name="camera3d" type="Camera3D" parent="." unique_id=558238836]
+transform = Transform3D(0.65209836, 0.22165702, -0.72500753, 0, 0.9563048, 0.2923717, 0.75813437, -0.1906551, 0.6236048, -4.6043816, 0.5, 4.0090456)
+
+[node name="spotLight3d" type="SpotLight3D" parent="." unique_id=1019011710]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.7742865, 0)
+spot_range = 10.192435
+spot_angle = 20.509846
 
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

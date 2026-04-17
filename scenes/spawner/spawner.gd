@@ -41,8 +41,9 @@ func handleTranslation(delta: float) -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	handleRotation(delta)
-	handleTranslation(delta)
+	if brick_mesh.visible:
+		handleRotation(delta)
+		handleTranslation(delta)
 	position.y = lerp(position.y, startYPos + highestYPos, delta * liftSpeed) # Smoothly lifts the entire spawner upward as the tower grows
 	
 func randomPlacePivot() -> void:
@@ -62,10 +63,10 @@ func showBrick() -> void:
 	brick_mesh.show()
 	
 func dropBrick() -> void:
+	SignalHub.emit_on_brick_dropped(brick_mesh.global_transform)
 	brick_mesh.hide()
 	
 func on_brick_landed(yPos: float) -> void:
-	print("Spawner: on_brick_landed: ", yPos)
 	raisePivot(yPos) # Raise spawner height
 	randomPlacePivot() # Move pivot to a new random location
 	showBrick() # Show the next brick

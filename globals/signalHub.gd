@@ -2,6 +2,10 @@ extends Node
 
 signal on_game_over
 signal on_brick_landed(y_position: float)
+signal on_brick_dropped(brick_transform: Transform3D)
+
+func emit_on_brick_dropped(brick_transform: Transform3D) -> void:
+	on_brick_dropped.emit(brick_transform)
 
 func emit_on_game_over() -> void:
 	on_game_over.emit()
