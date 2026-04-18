@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://blllrs61srq3h"]
+
+[ext_resource type="FontFile" uid="uid://cf2bueks4e84i" path="res://assets/fonts/PIPERLAND.ttf" id="1_baqla"]
+
+[resource]
+font = ExtResource("1_baqla")
+font_size = 45
+outline_size = 5
+outline_color = Color(0.4610594, 0.32192624, 0.3152411, 1)
+shadow_color = Color(0, 0, 0, 0.6313726)

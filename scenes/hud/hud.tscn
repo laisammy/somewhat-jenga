@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://24x30wj51cje"]
+
+[ext_resource type="Script" uid="uid://brpphxti54c7p" path="res://scenes/hud/hud.gd" id="1_0bx4p"]
+[ext_resource type="LabelSettings" uid="uid://chmqphucbo36r" path="res://scenes/hud/piperLand25.tres" id="1_c45xl"]
+[ext_resource type="LabelSettings" uid="uid://blllrs61srq3h" path="res://scenes/hud/piperLand45.tres" id="2_0bx4p"]
+[ext_resource type="FontFile" uid="uid://cf2bueks4e84i" path="res://assets/fonts/PIPERLAND.ttf" id="3_mgtrf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v7mo4"]
+font = ExtResource("3_mgtrf")
+font_size = 25
+outline_size = 5
+outline_color = Color(0.4610594, 0.32192624, 0.3152411, 1)
+shadow_color = Color(0, 0, 0, 0.6313726)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0bx4p"]
+font = ExtResource("3_mgtrf")
+font_size = 15
+outline_size = 5
+outline_color = Color(0.4610594, 0.32192624, 0.3152411, 1)
+shadow_color = Color(0, 0, 0, 0.6313726)
+
+[node name="HUD" type="Control" unique_id=2032261382]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0bx4p")
+
+[node name="colorRect" type="ColorRect" parent="." unique_id=1931259948]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 45.0
+grow_horizontal = 2
+color = Color(0.039215688, 0.14117648, 0.16862746, 0.75686276)
+
+[node name="marginContainer" type="MarginContainer" parent="colorRect" unique_id=1433567292]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 10
+
+[node name="hBoxContainer" type="HBoxContainer" parent="colorRect/marginContainer" unique_id=1580864022]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 10
+
+[node name="spawnTime" type="Label" parent="colorRect/marginContainer/hBoxContainer" unique_id=74057166]
+layout_mode = 2
+text = "2.2s"
+label_settings = ExtResource("1_c45xl")
+
+[node name="level" type="Label" parent="colorRect/marginContainer/hBoxContainer" unique_id=2076871310]
+layout_mode = 2
+text = "Level: 10"
+label_settings = ExtResource("1_c45xl")
+
+[node name="bricksLanded" type="Label" parent="colorRect/marginContainer" unique_id=1993612872]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "000"
+label_settings = ExtResource("1_c45xl")
+
+[node name="gameOver" type="ColorRect" parent="." unique_id=1244224311]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.74407107, 0.7266349, 0.36078432)
+
+[node name="vBoxContainer" type="VBoxContainer" parent="gameOver" unique_id=1247639485]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.5
+offset_top = -46.0
+offset_right = 104.5
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="gameOverLabel" type="Label" parent="gameOver/vBoxContainer" unique_id=557618136]
+layout_mode = 2
+text = "Game over!"
+label_settings = ExtResource("2_0bx4p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gameOverLabel2" type="Label" parent="gameOver/vBoxContainer" unique_id=409898369]
+layout_mode = 2
+text = "Try again!"
+label_settings = SubResource("LabelSettings_v7mo4")
+horizontal_alignment = 1
+
+[node name="gameOverLabel3" type="Label" parent="gameOver/vBoxContainer" unique_id=820048797]
+layout_mode = 2
+text = "(Press Esc to Restart)"
+label_settings = SubResource("LabelSettings_0bx4p")
+horizontal_alignment = 1

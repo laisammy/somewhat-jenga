@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bigdttkwf4r2r" path="res://assets/images/textures/rubber_tiles_nor_gl_1k.jpg" id="7_2a8rs"]
 [ext_resource type="PackedScene" uid="uid://dq24o73r4qc4v" path="res://scenes/brick/brick.tscn" id="8_87uf6"]
 [ext_resource type="PackedScene" uid="uid://b4ydfhlrnlavi" path="res://scenes/spawner/spawner.tscn" id="9_2a8rs"]
+[ext_resource type="PackedScene" uid="uid://24x30wj51cje" path="res://scenes/hud/hud.tscn" id="11_kp23o"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7h61r"]
 panorama = ExtResource("1_sul5r")
@@ -101,4 +102,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 
 [node name="brickContainer" type="Node" parent="." unique_id=642558276]
 
-[editable path="spawner"]
+[node name="HUD" parent="." unique_id=2032261382 instance=ExtResource("11_kp23o")]

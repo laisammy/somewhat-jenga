@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://chmqphucbo36r"]
+
+[ext_resource type="FontFile" uid="uid://cf2bueks4e84i" path="res://assets/fonts/PIPERLAND.ttf" id="1_8s7tc"]
+
+[resource]
+font = ExtResource("1_8s7tc")
+font_size = 25
+font_color = Color(0.9607843, 0.7254902, 0.44313726, 1)
+outline_color = Color(0.7490196, 0.5058824, 0.17254902, 1)
+shadow_color = Color(0, 0, 0, 0.6313726)

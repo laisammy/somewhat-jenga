@@ -14,6 +14,12 @@ var spawnTime: float = 4.0
 var startYPos: float = 0.0
 var highestYPos: float = 0.0
 
+func _unhandled_input(event: InputEvent) -> void:
+	if !timer.is_stopped() and event.is_action_pressed("drop"):
+		print("space")
+		timer.stop()
+		dropBrick()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	startYPos = position.y
