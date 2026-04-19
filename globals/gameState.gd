@@ -10,6 +10,8 @@ var score: int = 0:
 		if value > highScore:
 			highScore = value
 			saveHighScore()
+			print("High score saved")
+			SignalHub.emit_on_new_high_score(highScore)
 		
 var highScore: int = 0
 var bricksLanded: int = 0
@@ -30,3 +32,5 @@ func loadHighScore() -> void:
 	if file:
 		highScore = file.get_32()
 		file.close()
+		
+		

@@ -4,6 +4,8 @@ class_name Brick
 
 const TABLE_GROUP: String = "table"
 
+@onready var sound_effect: AudioStreamPlayer3D = $soundEffect
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -24,6 +26,7 @@ func _on_sleeping_state_changed() -> void:
 			sleeping_state_changed.disconnect(_on_sleeping_state_changed)
 
 func _on_body_entered(body: Node) -> void:
+	sound_effect.play()
 	if body.is_in_group(TABLE_GROUP) and !GameState.gameOver:
 		GameState.gameOver = true
 		SignalHub.emit_on_game_over()

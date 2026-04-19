@@ -3,6 +3,7 @@ extends Node3D
 @onready var pivot: Node3D = $pivot
 @onready var timer: Timer = $timer
 @onready var brick_mesh: MeshInstance3D = $pivot/brickMesh
+@onready var release_sound: AudioStreamPlayer3D = $releaseSound
 
 const moveLimit: float = 2.0
 const pivotLimit: float = 1.7
@@ -84,6 +85,7 @@ func showBrick() -> void:
 	brick_mesh.show()
 	
 func dropBrick() -> void:
+	release_sound.play()
 	SignalHub.emit_on_brick_dropped(brick_mesh.global_transform)
 	brick_mesh.hide()
 	

@@ -5,6 +5,13 @@
 [ext_resource type="LabelSettings" uid="uid://blllrs61srq3h" path="res://scenes/hud/piperLand45.tres" id="2_0bx4p"]
 [ext_resource type="FontFile" uid="uid://cf2bueks4e84i" path="res://assets/fonts/PIPERLAND.ttf" id="3_mgtrf"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_mgtrf"]
+font = ExtResource("3_mgtrf")
+font_size = 15
+font_color = Color(0.9607843, 0.7254902, 0.44313726, 1)
+outline_color = Color(0.7490196, 0.5058824, 0.17254902, 1)
+shadow_color = Color(0, 0, 0, 0.6313726)
+
 [sub_resource type="LabelSettings" id="LabelSettings_v7mo4"]
 font = ExtResource("3_mgtrf")
 font_size = 25
@@ -32,7 +39,7 @@ script = ExtResource("1_0bx4p")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 45.0
+offset_bottom = 62.0
 grow_horizontal = 2
 color = Color(0.039215688, 0.14117648, 0.16862746, 0.75686276)
 
@@ -51,18 +58,69 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 10
+alignment = 1
 
-[node name="spawnTime" type="Label" parent="colorRect/marginContainer/hBoxContainer" unique_id=74057166]
+[node name="vBoxContainer" type="VBoxContainer" parent="colorRect/marginContainer/hBoxContainer" unique_id=1699233998]
+layout_mode = 2
+
+[node name="timeLeftLabel" type="Label" parent="colorRect/marginContainer/hBoxContainer/vBoxContainer" unique_id=1850434832]
+layout_mode = 2
+text = "Time Left:"
+label_settings = SubResource("LabelSettings_mgtrf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="spawnTime" type="Label" parent="colorRect/marginContainer/hBoxContainer/vBoxContainer" unique_id=74057166]
 layout_mode = 2
 text = "8.0s"
 label_settings = ExtResource("1_c45xl")
 
-[node name="bricksLanded" type="Label" parent="colorRect/marginContainer/hBoxContainer" unique_id=2076871310]
+[node name="vBoxContainer2" type="VBoxContainer" parent="colorRect/marginContainer/hBoxContainer" unique_id=1715254896]
+layout_mode = 2
+
+[node name="bricksLandedLabel" type="Label" parent="colorRect/marginContainer/hBoxContainer/vBoxContainer2" unique_id=1573988579]
+layout_mode = 2
+text = "Bricks Landed:"
+label_settings = SubResource("LabelSettings_mgtrf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bricksLanded" type="Label" parent="colorRect/marginContainer/hBoxContainer/vBoxContainer2" unique_id=2076871310]
 layout_mode = 2
 text = "000"
 label_settings = ExtResource("1_c45xl")
 
-[node name="score" type="Label" parent="colorRect/marginContainer" unique_id=1993612872]
+[node name="hBoxContainer2" type="HBoxContainer" parent="colorRect/marginContainer" unique_id=144147684]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="vBoxContainer" type="VBoxContainer" parent="colorRect/marginContainer/hBoxContainer2" unique_id=1936205316]
+layout_mode = 2
+
+[node name="scoreLabel" type="Label" parent="colorRect/marginContainer/hBoxContainer2/vBoxContainer" unique_id=1082455729]
+layout_mode = 2
+text = "Current Score:"
+label_settings = SubResource("LabelSettings_mgtrf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score" type="Label" parent="colorRect/marginContainer/hBoxContainer2/vBoxContainer" unique_id=1993612872]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "000"
+label_settings = ExtResource("1_c45xl")
+
+[node name="vBoxContainer2" type="VBoxContainer" parent="colorRect/marginContainer/hBoxContainer2" unique_id=582935029]
+layout_mode = 2
+
+[node name="highScoreLabel" type="Label" parent="colorRect/marginContainer/hBoxContainer2/vBoxContainer2" unique_id=763439943]
+layout_mode = 2
+text = "Highest Score:"
+label_settings = SubResource("LabelSettings_mgtrf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="highScore" type="Label" parent="colorRect/marginContainer/hBoxContainer2/vBoxContainer2" unique_id=51699469]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "000"

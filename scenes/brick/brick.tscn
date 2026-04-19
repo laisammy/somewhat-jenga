@@ -2,9 +2,16 @@
 
 [ext_resource type="Script" uid="uid://d3b027t1s06h3" path="res://scenes/brick/brick.gd" id="1_a0gjw"]
 [ext_resource type="PackedScene" uid="uid://ba1a1x4wt0p0g" path="res://scenes/brickMesh/brick_mesh.tscn" id="2_k3dtg"]
+[ext_resource type="AudioStream" uid="uid://cq150yjnrouy5" path="res://assets/audio/dropBrick1.mp3" id="3_a0gjw"]
+[ext_resource type="AudioStream" uid="uid://3x2sgkrrj4a5" path="res://assets/audio/dropBrick2.mp3" id="4_18nu1"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5uvm4"]
 points = PackedVector3Array(0.2, 0.2, 1, 0.2, -0.2, 1, 0.2, 0.2, -1, -0.2, 0.2, 1, -0.2, -0.2, 1, 0.2, -0.2, -1, -0.2, 0.2, -1, -0.2, -0.2, -1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_txerc"]
+streams_count = 2
+stream_0/stream = ExtResource("3_a0gjw")
+stream_1/stream = ExtResource("4_18nu1")
 
 [node name="brick" type="RigidBody3D" unique_id=1212066804]
 contact_monitor = true
@@ -15,6 +22,9 @@ script = ExtResource("1_a0gjw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=366790552]
 shape = SubResource("ConvexPolygonShape3D_5uvm4")
+
+[node name="soundEffect" type="AudioStreamPlayer3D" parent="." unique_id=1962223442]
+stream = SubResource("AudioStreamRandomizer_txerc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]

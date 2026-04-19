@@ -4,6 +4,7 @@ signal on_game_over
 signal on_brick_landed(y_position: float)
 signal on_brick_dropped(brick_transform: Transform3D)
 signal on_score_increased(spawnTime: float)
+signal on_new_high_score(newHighScore: int)
 
 func emit_on_brick_dropped(brick_transform: Transform3D) -> void:
 	on_brick_dropped.emit(brick_transform)
@@ -16,3 +17,7 @@ func emit_on_brick_landed(y_position: float) -> void:
 
 func emit_on_score_increased(spawnTime: float) -> void:
 	on_score_increased.emit(spawnTime)
+	
+func emit_on_new_high_score(newHighScore: int) -> void:
+	print("emit_on_new_high_score")
+	on_new_high_score.emit(newHighScore)
