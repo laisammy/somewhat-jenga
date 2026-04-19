@@ -1,7 +1,17 @@
 extends Node
 
+const PATH: String = "user://userData.dat"
+
 var gameOver: bool = false
-var score: int = 0
+var score: int = 0:
+	get: return score
+	set(value):
+		score = value
+		if value > highScore:
+			highScore = value
+			saveHighScore()
+		
+var highScore: int = 0
 var bricksLanded: int = 0
 
 func resetGame() -> void:
@@ -9,11 +19,14 @@ func resetGame() -> void:
 	score = 0
 	bricksLanded = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func saveHighScore() -> void:
+	var file: FileAccess = FileAccess.open(PATH, FileAccess.WRITE)
+	if file:
+		file.store_32(highScore)
+		file.close()
+		
+func loadHighScore() -> void:
+	var file: FileAccess = FileAccess.open(PATH, FileAccess.READ)
+	if file:
+		highScore = file.get_32()
+		file.close()

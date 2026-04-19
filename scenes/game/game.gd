@@ -4,8 +4,6 @@ extends Node
 
 @onready var brick_container: Node = $brickContainer
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameState.resetGame()
@@ -15,4 +13,3 @@ func emit_on_brick_dropped(brick_transform: Transform3D) -> void:
 	var new_brick: Brick = brick_scene.instantiate()
 	new_brick.global_transform = brick_transform
 	brick_container.add_child(new_brick)
-	
