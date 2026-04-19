@@ -8,8 +8,8 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameState.resetGame()
 	SignalHub.on_brick_dropped.connect(emit_on_brick_dropped)
-	GameState.gameOver = false
 
 func emit_on_brick_dropped(brick_transform: Transform3D) -> void:
 	var new_brick: Brick = brick_scene.instantiate()

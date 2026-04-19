@@ -54,15 +54,15 @@ theme_override_constants/separation = 10
 
 [node name="spawnTime" type="Label" parent="colorRect/marginContainer/hBoxContainer" unique_id=74057166]
 layout_mode = 2
-text = "2.2s"
+text = "8.0s"
 label_settings = ExtResource("1_c45xl")
 
-[node name="level" type="Label" parent="colorRect/marginContainer/hBoxContainer" unique_id=2076871310]
+[node name="bricksLanded" type="Label" parent="colorRect/marginContainer/hBoxContainer" unique_id=2076871310]
 layout_mode = 2
-text = "Level: 10"
+text = "000"
 label_settings = ExtResource("1_c45xl")
 
-[node name="bricksLanded" type="Label" parent="colorRect/marginContainer" unique_id=1993612872]
+[node name="score" type="Label" parent="colorRect/marginContainer" unique_id=1993612872]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "000"

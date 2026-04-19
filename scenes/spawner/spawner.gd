@@ -10,7 +10,10 @@ const pivotLimit: float = 1.7
 var rotationSpeed: float = 2.0
 var moveSpeed: float = 2.0
 var liftSpeed: float = 5.0
-var spawnTime: float = 4.0
+
+const spawnReductionMult: float = 0.1
+
+var spawnTime: float = 8.0
 var startYPos: float = 0.0
 var highestYPos: float = 0.0
 
@@ -19,12 +22,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		print("space")
 		timer.stop()
 		dropBrick()
+		
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	startYPos = position.y
 	SignalHub.on_brick_landed.connect(on_brick_landed)
 	SignalHub.on_game_over.connect(on_game_over)
+	call_deferred("late_init")
+	
+func late_init() -> void:
 	on_brick_landed(0) # Spawn first brick
 
 func handleRotation(delta: float) -> void:
@@ -58,8 +66,15 @@ func randomPlacePivot() -> void:
 	pivot.position.z = randf_range(-pivotLimit, pivotLimit)
 	
 func raisePivot(yPos: float) -> void:
-	if yPos > highestYPos: # Whenever a brick lands, if its higher than previous bricks, the spawner's target height increases
+	if yPos > highestYPos and (yPos - highestYPos) > 0.05: # Whenever a brick lands, if its higher than previous bricks, the spawner's target height increases
+		#print("originalYPos: ", yPos)
+		#print("highestYPos: ", highestYPos)
 		highestYPos = yPos
+		if GameState.score != 0:
+			spawnTime -= spawnReductionMult * spawnTime # Decrease spawn time to increase difficulty
+			print("New spawnTime: ", spawnTime)
+		SignalHub.emit_on_score_increased(spawnTime)
+		print("New highest")
 	
 func startTimer() -> void:
 	timer.wait_time = spawnTime

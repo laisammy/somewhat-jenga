@@ -17,7 +17,8 @@ func _process(delta: float) -> void:
 
 func _on_sleeping_state_changed() -> void:
 	if sleeping:
-		if !GameState.gameOver:
+		if !GameState.gameOver: # Check if game is over
+			GameState.bricksLanded += 1
 			SignalHub.emit_on_brick_landed(position.y)
 		if sleeping_state_changed.is_connected(_on_sleeping_state_changed):
 			sleeping_state_changed.disconnect(_on_sleeping_state_changed)
