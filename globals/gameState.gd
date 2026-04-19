@@ -7,10 +7,13 @@ var score: int = 0:
 	get: return score
 	set(value):
 		score = value
+		#print(value)
+		#print(score)
+		#print(highScore)
 		if value > highScore:
 			highScore = value
 			saveHighScore()
-			print("High score saved")
+			#print("High score saved")
 			SignalHub.emit_on_new_high_score(highScore)
 		
 var highScore: int = 0
@@ -20,6 +23,8 @@ func resetGame() -> void:
 	gameOver = false
 	score = 0
 	bricksLanded = 0
+	highScore = loadHighScore()
+	#print(highScore)
 
 func saveHighScore() -> void:
 	var file: FileAccess = FileAccess.open(PATH, FileAccess.WRITE)
@@ -27,10 +32,12 @@ func saveHighScore() -> void:
 		file.store_32(highScore)
 		file.close()
 		
-func loadHighScore() -> void:
+func loadHighScore() -> int:
 	var file: FileAccess = FileAccess.open(PATH, FileAccess.READ)
 	if file:
 		highScore = file.get_32()
 		file.close()
+		return highScore
+	return 0
 		
 		
