@@ -20,7 +20,7 @@ var highestYPos: float = 0.0
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !timer.is_stopped() and event.is_action_pressed("drop"):
-		print("space")
+		#print("space")
 		timer.stop()
 		dropBrick()
 		
@@ -60,6 +60,7 @@ func _process(delta: float) -> void:
 		handleRotation(delta)
 		handleTranslation(delta)
 	position.y = lerp(position.y, startYPos + highestYPos, delta * liftSpeed) # Smoothly lifts the entire spawner upward as the tower grows
+	timeLeft()
 	
 func randomPlacePivot() -> void:
 	pivot.rotation_degrees = Vector3(0, randf_range(0, 360), 0) # Rotates to a random angle
@@ -73,13 +74,17 @@ func raisePivot(yPos: float) -> void:
 		highestYPos = yPos
 		if GameState.score != 0:
 			spawnTime -= spawnReductionMult * spawnTime # Decrease spawn time to increase difficulty
-			print("New spawnTime: ", spawnTime)
+			#print("New spawnTime: ", spawnTime)
 		SignalHub.emit_on_score_increased(spawnTime)
-		print("New highest")
+		#print("New highest")
 	
 func startTimer() -> void:
 	timer.wait_time = spawnTime
 	timer.start()
+	
+func timeLeft() -> void:
+	var timeLeft = timer.time_left
+	SignalHub.emit_on_timeLeft_ui(timeLeft)
 	
 func showBrick() -> void:
 	brick_mesh.show()
@@ -96,7 +101,7 @@ func on_brick_landed(yPos: float) -> void:
 	startTimer() # Start the timer to drop it
 	
 func on_game_over() -> void:
-	print("Spawner: on_game_over")
+	pass
 	
 func _on_timer_timeout () -> void:
 	dropBrick()
