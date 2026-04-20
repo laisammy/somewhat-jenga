@@ -43,6 +43,7 @@ func handleRotation(delta: float) -> void:
 	pivot.rotate_y(rotationInput * delta * rotationSpeed)
 
 func handleTranslation(delta: float) -> void:
+	
 	var trZ: float = Input.get_axis("left", "right")
 	var trX: float = Input.get_axis("backward", "forward")
 	

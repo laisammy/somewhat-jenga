@@ -48,7 +48,6 @@ outline_color = Color(0.41568628, 0.35686275, 0.21568628, 1)
 shadow_color = Color(0, 0, 0, 0.6313726)
 
 [node name="HUD" type="Control" unique_id=2032261382]
-process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -193,7 +192,7 @@ label_settings = SubResource("LabelSettings_0bx4p")
 horizontal_alignment = 1
 
 [node name="startingScreen" type="ColorRect" parent="." unique_id=2086031108]
-process_mode = 3
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -233,29 +232,5 @@ horizontal_alignment = 1
 [node name="gameOverLabel3" type="Label" parent="startingScreen/vBoxContainer" unique_id=420766014]
 layout_mode = 2
 text = "(Click anywhere to start playing)"
-label_settings = SubResource("LabelSettings_go0ap")
-horizontal_alignment = 1
-
-[node name="vBoxContainer2" type="VBoxContainer" parent="startingScreen" unique_id=545597432]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -107.5
-offset_top = -82.59003
-offset_right = 107.50018
-offset_bottom = -64.59003
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 4
-
-[node name="controlsLabel" type="Label" parent="startingScreen/vBoxContainer2" unique_id=2109847956]
-layout_mode = 2
-text = "Controls:
-WASD to move brick
-QE to rotate brick
-SPACE to drop brick"
 label_settings = SubResource("LabelSettings_go0ap")
 horizontal_alignment = 1

@@ -6,6 +6,7 @@ extends Control
 
 @onready var bricks_landed: Label = $colorRect/marginContainer/hBoxContainer/vBoxContainer2/bricksLanded
 @onready var spawn_timeLabel: Label = $colorRect/marginContainer/hBoxContainer/vBoxContainer/spawnTime
+@onready var starting_screen: ColorRect = $startingScreen
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +17,9 @@ func _ready() -> void:
 	SignalHub.on_timeLeft_ui.connect(on_timeLeft_ui)
 	
 	high_score.text = str(GameState.highScore).pad_zeros(3)
+	
+	starting_screen.show()
+	get_tree().paused = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -27,6 +31,12 @@ func on_game_over() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if game_over.visible and event.is_action_pressed("ui_cancel"):
 		get_tree().reload_current_scene()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and starting_screen.visible:
+		starting_screen.hide()
+		get_tree().paused = false
+
 
 func on_brick_landed(y_position: float) -> void:
 	bricks_landed.text = str(GameState.bricksLanded).pad_zeros(3)
