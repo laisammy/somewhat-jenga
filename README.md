@@ -11,3 +11,5 @@ Space to drop brick
 
 # Hardships, difficulties, problems blah blah blah
 Raycasting was something I've learned while developing games but never really applied it to my projects. For this project, I spent a while learning how Godot's raycasting worked and I managed to pull it off after an hour to trying to figure out.
+
+You can play the game [here](https://laisammy.itch.io/somewhat-jenga)
