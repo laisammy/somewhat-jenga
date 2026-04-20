@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dq24o73r4qc4v" path="res://scenes/brick/brick.tscn" id="8_87uf6"]
 [ext_resource type="PackedScene" uid="uid://b4ydfhlrnlavi" path="res://scenes/spawner/spawner.tscn" id="9_2a8rs"]
 [ext_resource type="PackedScene" uid="uid://24x30wj51cje" path="res://scenes/hud/hud.tscn" id="11_kp23o"]
+[ext_resource type="AudioStream" uid="uid://facautpk5b7r" path="res://assets/audio/bgMusic.mp3" id="12_5jirj"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7h61r"]
 panorama = ExtResource("1_sul5r")
@@ -105,5 +106,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 [node name="HUD" parent="." unique_id=2032261382 instance=ExtResource("11_kp23o")]
 
 [node name="backgroundMusic" type="AudioStreamPlayer3D" parent="." unique_id=660963740]
+stream = ExtResource("12_5jirj")
 volume_db = -15.0
 autoplay = true

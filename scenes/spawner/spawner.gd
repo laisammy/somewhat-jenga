@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 	if brick_mesh.visible:
 		handleRotation(delta)
 		handleTranslation(delta)
-	position.y = lerp(position.y, startYPos + highestYPos, delta * liftSpeed) # Smoothly lifts the entire spawner upward as the tower grows
+	position.y = lerp(position.y, startYPos + highestYPos - 0.5, delta * liftSpeed) # Smoothly lifts the entire spawner upward as the tower grows
 	timeLeft()
 	
 func randomPlacePivot() -> void:

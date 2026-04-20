@@ -48,4 +48,3 @@ func on_timeLeft_ui(timeLeft: float) -> void:
 	var formatString = "%01d.%01d"
 	var actualString = formatString % [sec, msec]
 	spawn_timeLabel.text = actualString
-	
