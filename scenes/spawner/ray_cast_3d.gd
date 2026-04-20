@@ -1,5 +1,5 @@
 extends RayCast3D
-@onready var shadow: Decal = $shadow
+@onready var shadow: Sprite3D = $shadow
 @onready var ray_cast_3d: RayCast3D = $"."
 
 
